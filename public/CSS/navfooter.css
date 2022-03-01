@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+}
+/* footer */
+#ft {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to right, orange, red);
+    height: 160px;
+    
+}
+
+#bouton{
+    /* margin-right: 10px; */
+    margin-top: 50px;
+    
+   
+}
+#facebook{
+    font-size: 40px;
+    text-decoration: none;
+    border: none;
+    background-color: #ffA100;
+    margin-left: 50px;
+    
+}
+#twitter{
+    font-size: 40px;
+    text-decoration: none;
+    border: none;
+    background-color: #ff9C00;
+    margin-left: 20px;
+}
+#insta{
+    font-size: 40px;
+    text-decoration: none;
+    border: none;
+    background-color: #ff9800;
+    margin-left: 20px;
+}
+
+#cgv {
+    text-decoration: none;
+    color: black;
+    margin-left: 400px;
+    font-size: 50px;
+    font-family: "Euphoria Script", cursive; 
+}
+
+#contact {
+    text-decoration: none;
+    color: black;
+    margin-left: 100px;
+    font-size: 50px; 
+    font-family: "Euphoria Script", cursive;
+}
+
+#propos {
+    text-decoration: none;
+    color: black;
+    margin-left: 100px;
+    font-size: 50px; 
+    font-family: "Euphoria Script", cursive;
+}

@@ -1,0 +1,165 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+
+<div id="carouselExampleDark" class="carousel  slide mt-4 h-100"  data-bs-ride="carousel">
+        <div class="carousel-indicators ">
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2" style="background-color:magenta;"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner" >
+          <div class="carousel-item active"  data-bs-interval="5000">
+            <img src="../image/solo leveling .png (5).jpg" class="d-block w-100 " alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Solo leveling</h5>
+              <p>Le manhwa culte de cette année.</p>
+            </div>
+          </div>
+          <div class="carousel-item "  data-bs-interval="5000">
+            <img src="../image/fondtruebeauty.png" class="d-block w-100 " style="background-color: black;" alt="...">
+            <div class="carousel-caption d-none d-md-block" >
+              <h5 style="color:magenta;"> True beauty</h5>
+              <p style="color:magenta;">L'art du maquillage peut transformer n'importe quelle lycéenne en déesse.</p>
+            </div>
+          </div>
+          <div class="carousel-item" data-bs-interval="5000">
+            <img src="../image/noblesse (11).jfif" class="d-block w-100 " alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Noblesse</h5>
+              <p>Raizel, immortel, vampire. Après plus de 820 ans, Raizel se réveille.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+</div>
+
+
+      <!-- favori 1-->
+      <div id="favori">
+        <div class="h4" >
+          <i id="favori1." class="far fa-star-half mt-3 " ></i>
+          <h4 id="premier" style="font-size: 30px;">Stikers</h4>
+          
+          <h4 id="premier1" style="font-size: 30px;">Tee-shirt</h4>
+          <div class="trait"><hr></div>
+        </div>
+
+    <div class="row">
+      <div class="card m-3" style="width: 18rem;">
+        <img src="../image/Stikers/stikers solo1.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Solo Leveling</h5>
+          <p class="card-text">Equipe de Sung Jinwoo </p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+      <div class="card m-3" style="width: 18rem;">
+        <img src="../image/Stikers/let'splay1.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Let's play</h5>
+          <p class="card-text">Sam Young</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+      <div class="card m-3" style="width: 18rem;">
+        <img src="../image/tee-shirt/treubeauty1.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">True Beauty</h5>
+          <p class="card-text">Jugyeong Lim avec Suho Lee et Seojun Han</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+      <div class="card m-3" style="width: 18rem;">
+        <img src="../image/tee-shirt/windbreaker1.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Wind Breaker</h5>
+          <p class="card-text">Joker</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- favori blog -->
+
+<div  class="row g-0 bg-light position-relative mt-3" style="height: 50px;">
+    <div class="col-md-6 mb-md-0 ">
+      <img src="../image/pexels-suzy-hazelwood-3601081.jpg" class="w-100" alt="...">
+    </div>
+    <div id="favori-blog" class="col-md-6 p-4 0">
+      <h5 class="mt-0">Columns with stretched link</h5>
+      <p>Another instance of placeholder content for this other custom component. It is intended to mimic what some real-world content would look like, and we're using it here to give the component a bit of body and size.</p>
+      <div class="card" style="width: 18rem;height: 450px;" >
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body" >
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- favori 1-->
+
+  <div id="favori1">
+    <div class="h4" >
+      <i id="favori1.1" class="far fa-star-half mt-3 " ></i>
+      <h4 id="premier" style="font-size: 30px;">Poster</h4>
+      
+      <h4 id="premier1" style="font-size: 30px;">Sacs</h4>
+      <div class="trait"><hr></div>
+    </div>
+
+  <div class="row">
+  <div class="card m-3" style="width: 18rem;">
+    <img src="../image/poster/noblesse1.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Noblesse</h5>
+      <p class="card-text">Equipe de Sung Jinwoo </p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  <div class="card m-3" style="width: 18rem;">
+    <img src="../image/poster/whiteblood1.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">White Blood</h5>
+      <p class="card-text">Sam Young</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  <div class="card m-3" style="width: 18rem;">
+    <img src="../image/sac/IloveYOO1.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">I love YOO</h5>
+      <p class="card-text">Jugyeong Lim avec Suho Lee et Seojun Han</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  <div class="card m-3" style="width: 18rem;">
+    <img src="../image/sac/Unordinary1.jpg" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Unordinary</h5>
+      <p class="card-text">Joker</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+<br>
+<br>
+<br>
+<h1 class="text-center">Nous contacter</h1>
+<img src="../image/ctc.jpg" class="rounded mx-auto d-block" alt="...">
+<div class="container">
+{# <form method="POST">
+  <div class="form-group ">
+      <label for="email" class="col-form-label mt-4">Votre adresse de courriel : </label>
+      {# <div class="col-sm-10"> #}
+      {# <input type="text" class="form-control" name="email" value="email@example.com" placeholder="Entrez votre adresse de courriel">
+  </div>
+  <div class="form-group">
+  <label class="col-form-label mt-4" for="subject">Sujet de votre message</label>
+  <input type="text" class="form-control" placeholder="Veuillez entrer le sujet de votre message" name="subject">
+</div>
+
+  <div class="form-group">
+      <label for="message" class="col-form-label mt-4">Message</label>
+      <textarea class="form-control" name="example" rows="4" placeholder="Veuillez écrire ici votre message"></textarea>
+    </div>
+  <input class="btn btn-primary mt-3" type="submit" value="Envoyer">
+</form> #} 
+{{ form_start(form) }}
+{{ form_widget(form)}}
+<button class="btn btn-primary mt-3">Envoyer</button>
+{{ form_end(form) }}
+<br>
+<br>
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2623.97681761864!2d2.315349915630247!3d48.877718479289456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fb60bfc264f%3A0xf103400969bc34bc!2s3%20Rue%20de%20Lisbonne%2C%2075008%20Paris!5e0!3m2!1sfr!2sfr!4v1645784203108!5m2!1sfr!2sfr" 
+width="600" height="450" style="border:0;" allowfullscreen="" class="rounded mx-auto d-block" loading="lazy"></iframe>
+</div>
+
+<br>
+<br>
+<br>
+{% endblock %}

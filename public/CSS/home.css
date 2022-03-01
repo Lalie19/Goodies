@@ -1,0 +1,49 @@
+/* carrousel */
+.carousel-item > img { 
+    max-width: 100%;
+    height: 300px;
+  }
+
+/* Favori  */
+#favori{
+    margin-left: 350px;    
+ }
+
+#premier{ 
+    display: inline-flex;
+    flex-direction: row;
+    font-family: 'Euphoria Script', cursive;
+    text-decoration: none;
+    
+} 
+#premier1{ 
+    display: inline-flex;
+    flex-direction: row;
+    margin-left: 550px;
+    font-family: 'Euphoria Script', cursive;
+} 
+
+#favori1{
+    margin-left: 20px;
+    
+}
+
+.trait {
+    width: 1240px;
+    margin-top: -20px;
+    margin-left: 10px;
+}
+
+
+
+/* favori blog */
+
+/* Favori 1 */
+#favori1{
+    margin-left: 350px;   
+    margin-top: 550px;  
+    
+ }
+
+
+

@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* head */
+#aside {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(to right, orange, red);
+  height: 160px;
+}
+/* logo */
+.logo {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+}
+/* recherche */
+#recherche {
+  margin-left: 150px;
+  width: 800px;
+  height: 50px;
+}
+#recherchebt {
+  font-size: 40px;
+  border: none;
+  background-color: rgb(255, 41, 0);
+  margin-right: 5px;
+}
+/* compte */
+#compte {
+  border-radius: 50px;
+  margin-left: 50px;
+  font-size: 30px;
+}
+#connextion {
+  border-radius: 50px;
+  margin-left: 10px;
+  font-size: 20px; 
+}
+
+/* shop */
+#shop {
+  margin-left: 200px;
+  font-size: 40px;
+  border: none;
+  background-color: red;
+}
+
+/* lien des pages */
+#aside1 {
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(to right, orange, red);
+  font-size: 40px;
+  font-family: "Euphoria Script", cursive;
+}
+ul {
+  display: table;
+}
+
+ul li {
+  display: inline-block;
+  padding: 5px;
+}
+
+.imcontact {
+  margin-right: 150px;
+}
