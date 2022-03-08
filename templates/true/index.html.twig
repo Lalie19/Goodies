@@ -6,7 +6,7 @@
 
     <h1>Goodies index</h1>
 
-    <table class="table">
+    {# <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -24,13 +24,24 @@
                 <td>{{ goody.name }}</td>
                 <td>{{ goody.description }}</td>
                 <td>{{ goody.price }}</td>
-                {# <td>{{ goody.types }}</td> #}
-
-                <td> 
+                <td>{{ goody.types }}</td> #}
+                {% for goody in trues %}
+    <div class="row">
+        <div class="card m-3" style="width: 18rem;">
+            <img src="" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ goody.name }}</h5>
+                <p class="card-text">{{ goody.description }}</p>
+                <p class="card-text">Le prix est :<br> {{ goody.price }} €</p>
+                <a href="{{ path('goodies_show', {'id': goody.id}) }}">show</a>
+                <a href="{{ path('cart_add' , {'goodies' : goody.id}) }}">add to basket</a>
+            </div>
+        </div>
+    </div>
+                {# <td> 
                     <a href="{{ path('goodies_show', {'id': goody.id}) }}">show</a>
-                    <a href="{{ path('goodies_edit', {'id': goody.id}) }}">edit</a>
                 </td>
-            </tr>
+            </tr> #}
         {% else %}
             <tr>
                 <td colspan="5">no records found</td>
