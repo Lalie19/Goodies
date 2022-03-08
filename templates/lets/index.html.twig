@@ -24,7 +24,7 @@
                 <td>{{ goody.price }}</td>
                 <td> 
                     <a href="{{ path('goodies_show', {'id': goody.id}) }}">show</a>
-                    <a href="{{ path('goodies_edit', {'id': goody.id}) }}">edit</a>
+                    <a href="{{ path('cart_add' , {'goodies' : goody.id}) }}">add to basket</a>
                 </td>
             </tr>
         {% else %}

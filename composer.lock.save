@@ -684,6 +684,7 @@
                 }
             ],
             "time": "2022-03-05T10:29:13+00:00"
+<<<<<<<HE
         },
         {
             "name": "doctrine/doctrine-fixtures-bundle",
