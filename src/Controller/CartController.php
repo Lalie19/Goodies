@@ -35,7 +35,54 @@ class CartController extends AbstractController
         //     11 => 1, 
         //     14 => 2,
         // ]
-        return $this->redirectToRoute('goodies_show', [
+        return $this->redirectToRoute('cart_show', [
+            'id' => $id,
+        ]);
+        dd($cart);
+        
+    }
+
+
+    #[Route([
+        '/{goodies}/less'
+        ,
+    ], name: 'cart_less')]
+    public function less(Goodies $goodies, SessionInterface $session ): Response
+    {
+        $cart = $session->get('cart', []);
+        $id = $goodies->getId();
+
+        if (2 > $cart[$id]) {
+            unset($cart[$id]);
+        } else {
+            $cart[$id]--;
+        }
+
+        $session->set('cart', $cart);
+
+        return $this->redirectToRoute('cart_show', [
+            'id' => $id,
+        ]);
+        dd($cart);
+        
+    }
+
+
+    #[Route([
+        '/{goodies}/remove'
+        ,
+    ], name: 'cart_remove')]
+    public function remove(Goodies $goodies, SessionInterface $session ): Response
+    {
+        $cart = $session->get('cart', []);
+        $id = $goodies->getId();
+
+            unset($cart[$id]);
+        
+
+        $session->set('cart', $cart);
+
+        return $this->redirectToRoute('cart_show', [
             'id' => $id,
         ]);
         dd($cart);
@@ -59,11 +106,7 @@ class CartController extends AbstractController
             ];
             $total += $goodies->getPrice() * $quantity;
         }
-        // [
-        //     11 => 1, 
-        //     14 => 2,
-        // ]
-        // dd($fullCart);
+
         return $this->render('cart/show.html.twig', [
             'cartGoodies' => $fullCart,
             'total' => $total,

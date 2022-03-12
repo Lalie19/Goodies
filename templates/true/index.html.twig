@@ -6,29 +6,11 @@
 
     <h1>Goodies index</h1>
 
-    {# <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Categorie</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for goody in trues %}
-            <tr>
-                <td>{{ goody.id }}</td>
-                <td>{{ goody.name }}</td>
-                <td>{{ goody.description }}</td>
-                <td>{{ goody.price }}</td>
-                <td>{{ goody.types }}</td> #}
+    
                 {% for goody in trues %}
     <div class="row">
         <div class="card m-3" style="width: 18rem;">
-            <img src="" class="card-img-top" alt="...">
+            <img class="img-size-little" src="/image/upload/{{goody.image}}" alt="image"></td>
             <div class="card-body">
                 <h5 class="card-title">{{ goody.name }}</h5>
                 <p class="card-text">{{ goody.description }}</p>
@@ -38,10 +20,6 @@
             </div>
         </div>
     </div>
-                {# <td> 
-                    <a href="{{ path('goodies_show', {'id': goody.id}) }}">show</a>
-                </td>
-            </tr> #}
         {% else %}
             <tr>
                 <td colspan="5">no records found</td>

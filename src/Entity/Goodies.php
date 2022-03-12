@@ -26,6 +26,9 @@ class Goodies
     #[ORM\JoinColumn(nullable: false)]
     private $types;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $image;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class Goodies
     public function setTypes(?Types $types): self
     {
         $this->types = $types;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }

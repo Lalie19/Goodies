@@ -1,4 +1,27 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    {# {{ form_widget(form) }} #}
+<div class="row">
+    <div class="col">
+    {{ form_row(form.name) }}
+    </div>
+    <div class="col">
+    {{ form_row(form.price) }}
+    </div>
+    <div class="col">
+    {{ form_row(form.types) }}
+    </div>
+</div>
+    {{ form_row(form.description) }}
+
+    {% if form.vars.value.image != "" %}
+        <p> Image actuelle:</p>
+        <img class="img-size-little" src="/image/upload/{{form.vars.value.image}}" alt="image">
+    {% endif %}
+    {# <pre>
+    {{ dump(form.vars.value.image)}}
+    </pre> #}
+    {{ form_row(form.image) }}
+
+
+    <button class="btn btn-warning">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

@@ -23,6 +23,16 @@
                 <th>Price</th>
                 <td>{{ goody.price }}</td>
             </tr>
+            <tr>
+                <th>Image</th>
+                <td>
+                
+                {# <pre>
+                    {{ dump(goody.image) }}
+                </pre> #}
+                <p> Image actuelle:</p>
+        <img class="img-size-little" src="/image/upload/{{goody.image}}" alt="image"></td>
+            </tr>
         </tbody>
     </table>
     <a href="{{ path('goodies_index') }}">back to list</a>

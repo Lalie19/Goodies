@@ -9,27 +9,28 @@ class UploadTool
 {
     private $slugger;
     
-    private $uploadFolder = "image/uploads/";
+    private $imageDirectory;
 
     public function __construct(SluggerInterface $slugger)
     {
         $this->slugger = $slugger;
+        $this->imageDirectory = "image/upload/";
     }
 
-    public function upload(UploadedFile $newFile, ?string $oldFile = ""): string 
+    public function upload(UploadedFile $newFile, ?string $oldPath = ""): string 
     {
         $originalFileName = pathinfo($newFile->getClientOriginalName(), PATHINFO_FILENAME);
         $safeFilename = $this->slugger->slug($originalFileName);
-        $fullFilename = $safeFilename . uniqid() . '.' .  $newFile->guessExtension();
-        $newFile->move($this->uploadFolder, $fullFilename);
-        $this->delete($oldFile);
+        $fullFilename = "$safeFilename" . uniqid() . '.' .  $newFile->guessExtension();
+        $newFile->move($this->imageDirectory, $fullFilename);
+        $this->delete($oldPath);
         return $fullFilename;
     }
 
-    public function delete(?string $ordFileName = ""): void 
+    public function delete(?string $oldPath): void 
     {
-        if ($ordFileName) {
-            unlink($this->uploadFolder . $ordFileName);
+        if ($oldPath) {
+            unlink($this->imageDirectory . $oldPath);
         }
         
     }

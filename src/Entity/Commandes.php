@@ -26,6 +26,15 @@ class Commandes
     #[ORM\Column(type: 'string', length: 255)]
     private $numero_facture;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $stripeSucessKey;
+
+    #[ORM\Column(type: 'boolean')]
+    private $paid;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $piStripe;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +84,42 @@ class Commandes
     public function setNumeroFacture(string $numero_facture): self
     {
         $this->numero_facture = $numero_facture;
+
+        return $this;
+    }
+
+    public function getStripeSucessKey(): ?string
+    {
+        return $this->stripeSucessKey;
+    }
+
+    public function setStripeSucessKey(?string $stripeSucessKey): self
+    {
+        $this->stripeSucessKey = $stripeSucessKey;
+
+        return $this;
+    }
+
+    public function getPaid(): ?bool
+    {
+        return $this->paid;
+    }
+
+    public function setPaid(bool $paid): self
+    {
+        $this->paid = $paid;
+
+        return $this;
+    }
+
+    public function getPiStripe(): ?string
+    {
+        return $this->piStripe;
+    }
+
+    public function setPiStripe(?string $piStripe): self
+    {
+        $this->piStripe = $piStripe;
 
         return $this;
     }

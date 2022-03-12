@@ -9,7 +9,7 @@
             <a href="{{ path('home') }}"><img class="logo"  src="../image/imageonline-co-whitebackgroundremoved.png" alt="" ></a>
 
             {% if app.user %}
-            <a href="{{ path('user_profile') }}" class="mt-4"><button i class="far fa-user-circle" id="compte" ></i>Mon compte</button></a>
+            <a href="{{ path('user_list') }}" class="mt-4"><button i class="far fa-user-circle" id="compte" ></i>Mon compte</button></a>
             <a href="{{ path('logout') }}"class="mt-4"><button id="connextion" >Deconnexion</button></a>
             {% else %}
             <a href="{{ path('register') }}" class="mt-4"><button i class="far fa-user-circle" id="compte" ></i>Inscription</button></a>
