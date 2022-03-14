@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Form\ContactType;
-use App\From\Builder\Contact;
+use App\Form\Builder\Contact;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Mime\Address;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
