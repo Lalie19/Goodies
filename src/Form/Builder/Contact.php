@@ -1,6 +1,6 @@
 <?php 
 
-namespace App\From\Builder;
+namespace App\Form\Builder;
 
 class Contact 
 {
