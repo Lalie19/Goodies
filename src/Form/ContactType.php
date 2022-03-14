@@ -2,7 +2,7 @@
 
 namespace App\Form;
 
-use App\From\Builder\Contact;
+use App\Form\Builder\Contact;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Length;
