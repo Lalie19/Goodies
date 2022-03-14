@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Information sur votre profil{% endblock %}
+
+{% block body %}
+
+
+<br>
+<br>
+<br>
+
+    
+<div class="container mt-5">
+<h1>Profil de {{ app.user.firstname}} {{ app.user.lastname}}  </h1>
+
+    <div>Nom : {{ app.user.lastname}}</div>
+    <div>Prénom :{{ app.user.firstname}}</div>
+    <div>Email : {{ app.user.email}}</div>
+
+    {# {% for user in users %} #}
+    <a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-warning">Modifier le profil</a>
+    <a href="" class="btn btn-warning">Modifier le mot de passe</a>
+    {# {% endfor %} #}
+</div>
+
+
+
+    
+{% endblock %}
