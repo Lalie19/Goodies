@@ -92,6 +92,7 @@ class RegistrationFormType extends AbstractType
             ->add('picture', TextType::class, [
                 'label' => "votre image : ",
                 'required' => true,
+                
                 'attr' => [
                     'placeholder' => "entrez votre image ici",
                 ],

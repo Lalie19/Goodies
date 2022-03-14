@@ -26,6 +26,10 @@ class CommandesController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $commande = new Commandes();
+        $user = $this->getUser();
+        if ($user) {
+            
+        }
         $form = $this->createForm(CommandesType::class, $commande);
         $form->handleRequest($request);
 

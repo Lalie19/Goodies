@@ -14,12 +14,18 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/user')]
 class UserController extends AbstractController
 {
-    #[Route('/', name: 'user_profile', methods: ['GET'])]
+    // #[Route('/', name: 'user_list', methods: ['GET'])]
+    // public function index(UserRepository $userRepository): Response
+    // {
+    //     return $this->render('user/list.html.twig', [
+    //         'users' => $userRepository->findAll(),
+    //     ]);
+    // }
+
+    #[Route('/', name: 'user_profil', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {
-        return $this->render('user/profile.html.twig', [
-            'users' => $userRepository->findAll(),
-        ]);
+        return $this->render('user/profil.html.twig');
     }
 
     #[Route('/new', name: 'user_new', methods: ['GET', 'POST'])]
@@ -59,7 +65,7 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('user_list', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('user/edit.html.twig', [
@@ -78,6 +84,8 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('user_list', [], Response::HTTP_SEE_OTHER);
     }
+
+    
 
     /**
      * Display user informations specified by $id

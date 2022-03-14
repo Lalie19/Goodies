@@ -1,9 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}Information sur votre profil{% endblock %}
 
 {% block body %}
-    <h1>User index</h1>
+
+
+    <h1>Liste des utilisateurs</h1>
+    {# <ul>
+        {% for user in users %}
+            <a href="/user/edit/{{ user.id }}">
+                <li>{{ user.id }}. {{ user.lastname }} {{ user.firstname }} - {{ user.email }} </li>
+            </a>
+        {% endfor %}
+    </ul>
+
+    <a href="/user/add" class="btn btn-primary">Ajouter un utilisateur</a> #}
+
+
+
+     
 
     <table class="table">
         <thead>
@@ -14,8 +29,6 @@
                 <th>Email</th>
                 <th>Adress</th>
                 <th>Phone</th>
-                <th>Password</th>
-                <th>Role</th>
                 <th>Speudo</th>
                 <th>Picture</th>
                 <th>actions</th>
@@ -25,15 +38,13 @@
         {% for user in users %}
             <tr>
                 <td>{{ user.id }}</td>
-                <td>{{ user.firstname }}</td>
-                <td>{{ user.lastname }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.adress }}</td>
-                <td>{{ user.phone }}</td>
-                <td>{{ user.password }}</td>
-                <td>{{ user.role ? user.role|json_encode : '' }}</td>
-                <td>{{ user.speudo }}</td>
-                <td>{{ user.picture }}</td>
+                <td>{{ app.user.firstname }}</td>
+                <td>{{ app.user.lastname }}</td>
+                <td>{{ app.user.email }}</td>
+                <td>{{ app.user.adress }}</td>
+                <td>{{ app.user.phone }}</td>
+                <td>{{ app.user.speudo }}</td>
+                <td>{{ app.user.picture }}</td>
                 <td>
                     <a href="{{ path('user_show', {'id': user.id}) }}">show</a>
                     <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
@@ -47,5 +58,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('user_new') }}">Create new</a>
+    <a href="{{ path('user_new') }}">Create new</a> 
 {% endblock %}
