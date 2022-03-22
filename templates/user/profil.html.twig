@@ -13,14 +13,24 @@
 <div class="container mt-5">
 <h1>Profil de {{ app.user.firstname}} {{ app.user.lastname}}  </h1>
 
+    <div>ID : {{ app.user.id}}</div>
     <div>Nom : {{ app.user.lastname}}</div>
     <div>Prénom :{{ app.user.firstname}}</div>
     <div>Email : {{ app.user.email}}</div>
 
-    {# {% for user in users %} #}
-    <a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-warning">Modifier le profil</a>
+ {# <a class="my-3 btn btn-secondary" href="{{ path('invoice_user_invoice', {'id': user.id}) }}">Mes achats</a> #}
+
+      <a class="my-3 btn btn-secondary" href="{{ path('profil_edit', {'id': user.id}) }}">Modifier</a>
+
+      {{ include('user/_delete_form.html.twig') }}
+
+      <a href="{{ path('user_index') }}">Retour au menu Utilisateur</a>
+    {# <a href="{{ path('user_edit')}}"></a> #}
+
+    {# {% for user in users %}
+    <a href="{{ path('user_edit', {'id': user.id}) }}">Modifier le profil </a>
     <a href="" class="btn btn-warning">Modifier le mot de passe</a>
-    {# {% endfor %} #}
+    {% endfor %} #}
 </div>
 
 

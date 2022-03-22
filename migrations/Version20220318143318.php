@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220310133841 extends AbstractMigration
+final class Version20220318143318 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,12 +20,12 @@ final class Version20220310133841 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE commandes ADD stripe_sucess_key VARCHAR(255) DEFAULT NULL, ADD paid TINYINT(1) NOT NULL, ADD pi_stripe VARCHAR(255) DEFAULT NULL');
+        $this->addSql('ALTER TABLE commande ADD numero VARCHAR(255) NOT NULL');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE commandes DROP stripe_sucess_key, DROP paid, DROP pi_stripe');
+        $this->addSql('ALTER TABLE commande DROP numero');
     }
 }

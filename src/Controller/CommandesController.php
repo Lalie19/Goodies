@@ -2,84 +2,78 @@
 
 namespace App\Controller;
 
-use App\Entity\Commandes;
-use App\Form\CommandesType;
-use App\Repository\CommandesRepository;
+use App\Entity\Achats;
+use App\Entity\Commande;
+use App\Form\CommandeType;
+use App\Repository\GoodiesRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-#[Route('/commandes')]
 class CommandesController extends AbstractController
 {
-    #[Route('/', name: 'commandes_index', methods: ['GET'])]
-    public function index(CommandesRepository $commandesRepository): Response
+    #[Route('/commandes', name: 'app_commandes')]
+    public function index(): Response
     {
         return $this->render('commandes/index.html.twig', [
-            'commandes' => $commandesRepository->findAll(),
+            'controller_name' => 'CommandesController',
         ]);
     }
 
     #[Route('/new', name: 'commandes_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, SessionInterface $session, GoodiesRepository $goodiesRepository): Response
     {
-        $commande = new Commandes();
+        $commande = new Commande();
         $user = $this->getUser();
         if ($user) {
-            
+            $commande->setFirstname($user->getFirstname())
+            ->setName($user->getLastname());
         }
-        $form = $this->createForm(CommandesType::class, $commande);
+
+        $fullCart = [];
+        $total = 0;
+        $cart = $session->get('cart', []);
+        foreach ($cart as $id => $quantity) {
+            $goodies = $goodiesRepository->find($id);
+            $fullCart[] = [
+                "goodies" => $goodies,
+                "quantity" => $quantity,
+            ];
+            $total += $goodies->getPrice() * $quantity;
+        }
+
+
+        $form = $this->createForm(CommandeType::class, $commande);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $commande->setPrice($total)
+                ->setPaid(false)
+                ->setStripeSucessKey(uniqid());
             $entityManager->persist($commande);
+            foreach ($cart as $id => $quantity) {
+                $goodies = $goodiesRepository->find($id);
+                $achats = new Achats;
+                $achats->setCommande($commande)
+                    ->setGoodies($goodies)
+                    ->setNombres($goodies->getPrice())
+                    ->setQuantity($quantity);
+                $entityManager->persist($achats);
+
+            }
             $entityManager->flush();
 
-            return $this->redirectToRoute('commandes_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('stripe_checkout', ["commande" => $commande->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('commandes/new.html.twig', [
             'commande' => $commande,
             'form' => $form,
+            'cartGoodies' => $fullCart,
+            'total' => $total,
         ]);
-    }
-
-    #[Route('/{id}', name: 'commandes_show', methods: ['GET'])]
-    public function show(Commandes $commande): Response
-    {
-        return $this->render('commandes/show.html.twig', [
-            'commande' => $commande,
-        ]);
-    }
-
-    #[Route('/{id}/edit', name: 'commandes_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Commandes $commande, EntityManagerInterface $entityManager): Response
-    {
-        $form = $this->createForm(CommandesType::class, $commande);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-
-            return $this->redirectToRoute('commandes_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->renderForm('commandes/edit.html.twig', [
-            'commande' => $commande,
-            'form' => $form,
-        ]);
-    }
-
-    #[Route('/{id}', name: 'commandes_delete', methods: ['POST'])]
-    public function delete(Request $request, Commandes $commande, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$commande->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($commande);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('commandes_index', [], Response::HTTP_SEE_OTHER);
     }
 }

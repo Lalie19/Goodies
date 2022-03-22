@@ -2,6 +2,8 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\User;
+use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -20,4 +22,15 @@ class AdminController extends AbstractController
             'controller_name' => 'AdminController',
         ]);
     }
+    
+
+    // #[Route('/list', name: 'admin_list', methods: ['GET'])]
+    // public function list(UserRepository $user): Response
+    // {
+    //     return $this->render('user/list.html.twig', [
+    //         'user' =>$user,
+    //     ]);
+    // }
+
+    
 }

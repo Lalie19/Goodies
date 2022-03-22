@@ -4,28 +4,24 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Form\ProfileType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/user')]
 class UserController extends AbstractController
 {
-    // #[Route('/', name: 'user_list', methods: ['GET'])]
-    // public function index(UserRepository $userRepository): Response
-    // {
-    //     return $this->render('user/list.html.twig', [
-    //         'users' => $userRepository->findAll(),
-    //     ]);
-    // }
-
-    #[Route('/', name: 'user_profil', methods: ['GET'])]
+    #[Route('/', name: 'user_index', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {
-        return $this->render('user/profil.html.twig');
+        return $this->render('user/index.html.twig', [
+            'users' => $userRepository->findAll(),
+        ]);
     }
 
     #[Route('/new', name: 'user_new', methods: ['GET', 'POST'])]
@@ -48,9 +44,10 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'user_show', methods: ['GET'])]
+    #[Route('/{id}/show', name: 'user_show', methods: ['GET'])]
     public function show(User $user): Response
     {
+        
         return $this->render('user/show.html.twig', [
             'user' => $user,
         ]);
@@ -63,9 +60,10 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            dd($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('user_list', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('user/edit.html.twig', [
@@ -74,7 +72,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'user_delete', methods: ['POST'])]
+    #[Route('/{id}/delete', name: 'user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
@@ -82,19 +80,38 @@ class UserController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('user_list', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('user_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    
+    #[Route('/profil', name: 'user_profil', methods: ['GET'])]
+    #[IsGranted("ROLE_USER")]
+    public function profil(): Response
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+        
+        return $this->render('user/profil.html.twig', [
+            'user' => $user,
+        ]); 
 
-    /**
-     * Display user informations specified by $id
-     *
-     * @param int $id
-     * @return string
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
-     */
+    }
+    #[Route('/{id}/profil_edit', name: 'profil_edit', methods: ['GET', 'POST'])]
+    public function profilEdit(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    {
+        $user = $this->getUser();
+
+        $form = $this->createForm(ProfileType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('user_profil', [], Response::HTTP_SEE_OTHER);
+        }
+        return $this->renderForm('user/profil_edit.html.twig', [
+            'user' => $user,
+            'form' => $form,
+        ]);
+    }
     
 }

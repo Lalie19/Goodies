@@ -47,5 +47,9 @@
             </tr>
         </tbody>
     </table>
+
+    {% if cartGoodies != [] %}
+    <a href="{{ path('commandes_new') }}" class="btn btn-primary">Order now</a>
+    {% endif %}
 </div>
 {% endblock %}

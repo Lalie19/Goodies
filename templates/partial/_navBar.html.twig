@@ -31,7 +31,7 @@
           <ul>
           {% if is_granted("ROLE_ADMIN") %}
             <li class="nav-item">
-                <a  class="btn btn-danger btn-lg" href="{{ path('goodies_index') }}">Tout les goodies</a>
+                <a  class="btn btn-danger btn-lg" href="{{ path('admin') }}">Admin</a>
               </li>
             {% endif %}
             <li class="nav-item dropdown">
@@ -77,11 +77,6 @@
                   <li><a class="dropdown-item" href="articles.html">Articles</a></li>
                 </ul>
               </li>
-              {% if is_granted("ROLE_ADMIN") %}
-              <li class="nav-item">
-                <a  class="btn btn-warning btn-lg" href="{{ path('types_index') }}">Types</a>
-              </li>
-              {% endif %}
           </ul>
         </div>
     </div>
