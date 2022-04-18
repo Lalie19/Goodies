@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Coup de coeurs{% endblock %}
+
+{% block body %}
+    <h1>Coup de coeurs</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Slug</th>
+                <th>Titre</th>
+                <th>Article</th>
+                <th>Date</th>
+                <th>Auteur</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for articles in coupcoeurs %}
+            <tr>
+                <td>{{ articles.id }}</td>
+                <td>{{ articles.slug }}</td>
+                <td>{{ articles.titre }}</td>
+                <td>{{ articles.article }}</td>
+                <td>{{ articles.date ? articles.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ articles.auteur }}</td>
+                <td> 
+                    <a href="{{ path('articles_show', {'id': articles.id}) }}">show</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
