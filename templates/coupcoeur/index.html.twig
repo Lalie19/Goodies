@@ -3,38 +3,35 @@
 {% block title %}Coup de coeurs{% endblock %}
 
 {% block body %}
-    <h1>Coup de coeurs</h1>
+<br>
+<br>
+<br>
+<div class='container'>
+    <h1 id='titre'>Coup de coeurs</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Slug</th>
-                <th>Titre</th>
-                <th>Article</th>
-                <th>Date</th>
-                <th>Auteur</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for articles in coupcoeurs %}
-            <tr>
-                <td>{{ articles.id }}</td>
-                <td>{{ articles.slug }}</td>
-                <td>{{ articles.titre }}</td>
-                <td>{{ articles.article }}</td>
-                <td>{{ articles.date ? articles.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ articles.auteur }}</td>
-                <td> 
-                    <a href="{{ path('articles_show', {'id': articles.id}) }}">show</a>
-                </td>
-            </tr>
+    <div class="row2">
+                {% for articles in coupcoeurs %}
+    
+        <div class="card m-3" style="width: 18rem;">
+            {# <img class="img-size-little" src="/image/upload/{{goody.image}}" alt="image"></td> #}
+            <div class="card-body">
+                <h5 class="card-title">{{ articles.slug }}</h5>
+                <h5 class="card-title">{{ articles.titre }}</h5>
+                <p class="card-text">{{ articles.article }}</p>
+                <p class="card-text">{{ articles.date ? articles.date|date('Y-m-d H:i:s') : '' }}</p>
+                <p class="card-text">L'auteur est :<br> {{ articles.auteur }}</p>
+                <a href="{{ path('articles_show', {'id': articles.id}) }}">show</a>
+                
+            </div>
+        </div>
         {% else %}
             <tr>
                 <td colspan="5">no records found</td>
             </tr>
         {% endfor %}
-        </tbody>
-    </table>
+        {# </tbody>
+    </table> #}
+    </div>
+</div>
+    
 {% endblock %}

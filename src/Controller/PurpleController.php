@@ -14,6 +14,7 @@ class PurpleController extends AbstractController
     #[Route('/', name: 'purple_index', methods: ['GET'])]
     public function index(GoodiesRepository $goodiesRepository ): Response
     {
+        // findBy permet de retourner une liste d'object qu'on aura sellectionné// 
         return $this->render('purple/index.html.twig', [
             'purples' => $goodiesRepository->findBy( [ 'name' => 'Purple Jacinth'], [ 'price' => 'ASC']),
         ]);

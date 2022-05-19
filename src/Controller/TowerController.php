@@ -12,6 +12,7 @@ class TowerController extends AbstractController
     #[Route('/', name: 'tower_index', methods: ['GET'])]
     public function index(GoodiesRepository $goodiesRepository ): Response
     {
+        // findBy permet de retourner une liste d'object qu'on aura sellectionné// 
         return $this->render('tower/index.html.twig', [
             'towers' => $goodiesRepository->findBy( [ 'name' => 'Tower of God'], [ 'price' => 'ASC']),
         ]);

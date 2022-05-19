@@ -3,6 +3,10 @@
 {% block title %}Edit Goodies{% endblock %}
 
 {% block body %}
+<br>
+<br>
+<br>
+<div class="container">
     <h1>Edit Goodies</h1>
 
     {{ include('goodies/_form.html.twig', {'button_label': 'Update'}) }}
@@ -10,4 +14,5 @@
     <a href="{{ path('goodies_index') }}">back to list</a>
 
     {{ include('goodies/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

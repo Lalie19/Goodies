@@ -14,6 +14,7 @@ class WhiteController extends AbstractController
     #[Route('/', name: 'white_index', methods: ['GET'])]
     public function index(GoodiesRepository $whiteRepository ): Response
     {
+        // findBy permet de retourner une liste d'object qu'on aura sellectionné// 
         return $this->render('white/index.html.twig', [
             'whites' => $whiteRepository->findBy( [ 'name' => 'White Blood'], [ 'price' => 'ASC']),
         ]);

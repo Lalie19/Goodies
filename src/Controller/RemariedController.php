@@ -14,6 +14,7 @@ class RemariedController extends AbstractController
     #[Route('/', name: 'remaried_index', methods: ['GET'])]
     public function index(GoodiesRepository $goodiesRepository ): Response
     {
+        // findBy permet de retourner une liste d'object qu'on aura sellectionné// 
         return $this->render('remaried/index.html.twig', [
             'remarieds' => $goodiesRepository->findBy( [ 'name' => "Remaried Empress"], [ 'price' => 'ASC']),
         ]);

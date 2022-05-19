@@ -3,35 +3,35 @@
 {% block title %}I love YOO{% endblock %}
 
 {% block body %}
-    <h1>Goodies index</h1>
+<br>
+<br>
+<br>
+<div class='container'>
+    <h1 id='titre'>Goodies I love YOO</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for goody in iloveyoos %}
-            <tr>
-                <td>{{ goody.id }}</td>
-                <td>{{ goody.name }}</td>
-                <td>{{ goody.description }}</td>
-                <td>{{ goody.price }}</td>
-                <td> 
-                    <a href="{{ path('goodies_show', {'id': goody.id}) }}">show</a>
-                </td>
-            </tr>
+    <div class="row2">
+                {% for goody in iloveyoos %}
+    
+        <div class="card m-3" style="width: 18rem;">
+            <img class="img-size-little" src="/image/upload/{{goody.image}}" alt="image"></td>
+            <div class="card-body">
+                <h5 class="card-title">{{ goody.name }}</h5>
+                <p class="card-text">{{ goody.description }}</p>
+                <p class="card-text">Le prix est :<br> {{ goody.price }} €</p>
+                <a href="{{ path('goodies_show', {'id': goody.id}) }}">show</a>
+                <a href="{{ path('cart_add' , {'goodies' : goody.id}) }}">add to basket</a>
+            </div>
+        </div>
+    
         {% else %}
             <tr>
                 <td colspan="5">no records found</td>
             </tr>
         {% endfor %}
-        </tbody>
-    </table>
+        {# </tbody>
+    </table> #}
+    </div>
+</div>
+    
 
 {% endblock %}

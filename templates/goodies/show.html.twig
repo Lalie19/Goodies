@@ -3,6 +3,11 @@
 {% block title %}Goodies{% endblock %}
 
 {% block body %}
+<br>
+<br>
+<br>
+<br>
+<div class="container">
     <h1>Goodies</h1>
 
     <table class="table">
@@ -35,13 +40,13 @@
             </tr>
         </tbody>
     </table>
-    <a href="{{ path('goodies_index') }}">back to list</a>
     <a href="{{ path('goodies_index') }}">add to basket</a>
 {% if is_granted("ROLE_ADMIN") %}
     
-
+    <a href="{{ path('goodies_index') }}">back to list</a>
     <a href="{{ path('goodies_edit', {'id': goody.id}) }}">edit</a>
 
     {{ include('goodies/_delete_form.html.twig') }}
     {% endif %}
+</div>
 {% endblock %}

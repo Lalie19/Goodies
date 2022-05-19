@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+// IsGranted permet de réduire l'accès // 
 #[
     Route('/admin'),
     IsGranted("ROLE_ADMIN")]
@@ -22,15 +23,5 @@ class AdminController extends AbstractController
             'controller_name' => 'AdminController',
         ]);
     }
-    
 
-    // #[Route('/list', name: 'admin_list', methods: ['GET'])]
-    // public function list(UserRepository $user): Response
-    // {
-    //     return $this->render('user/list.html.twig', [
-    //         'user' =>$user,
-    //     ]);
-    // }
-
-    
 }

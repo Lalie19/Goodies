@@ -52,21 +52,7 @@ class HomeController extends AbstractController
             'contact' => $contact,
             'form' => $form,
         ]);
-        // if ($request->request->all()) {
-        //     $email= new TemplatedEmail();
-        //     $email->to(new Address("no-response@lalie.net", "service client"))
-        //         ->from($request->request->get("email"))
-        //         ->subject($request->request->get("subject"))
-        //         ->htmlTemplate('email/contact.html.twig')
-        //         ->context([
-        //             "message" => $request->request->get("messsage"),
-        //         ]);
-        //     $mailer->send($email);
-        //     $this->addFlash("sucess", "votre message a bien été envoyé");
-        //     return $this->redirectToRoute('home');
-
-        // }
-        
+    
         return $this->render('home/contact.html.twig');
     }
 }

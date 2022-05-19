@@ -18,6 +18,7 @@ class LetsController extends AbstractController
     #[Route('/', name: 'lets_index', methods: ['GET'])]
     public function index(GoodiesRepository $goodiesRepository ): Response
     {
+        // findBy permet de retourner une liste d'object qu'on aura sellectionné// 
         return $this->render("lets/index.html.twig", [
             'letss' => $goodiesRepository->findBy( [ 'name' => "Let's play"], [ 'price' => 'ASC']),
         ]);

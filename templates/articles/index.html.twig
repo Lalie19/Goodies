@@ -3,41 +3,37 @@
 {% block title %}Articles index{% endblock %}
 
 {% block body %}
-    <h1>Articles index</h1>
+<br>
+<br>
+<br>
+<div class='container'>
+    <h1 id='titre'>Articles</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Slug</th>
-                <th>Titre</th>
-                <th>Article</th>
-                <th>Date</th>
-                <th>Auteur</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for article in articles %}
-            <tr>
-                <td>{{ article.id }}</td>
-                <td>{{ article.slug }}</td>
-                <td>{{ article.titre }}</td>
-                <td>{{ article.article }}</td>
-                <td>{{ article.date ? article.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ article.auteur }}</td>
-                <td>
-                    <a href="{{ path('articles_show', {'id': article.id}) }}">show</a>
-                    <a href="{{ path('articles_edit', {'id': article.id}) }}">edit</a>
-                </td>
-            </tr>
+    <div class="row2">
+                {% for article in articles %}
+    
+        <div class="card m-3" style="width: 18rem;">
+            {# <img class="img-size-little" src="/image/upload/{{goody.image}}" alt="image"></td> #}
+            <div class="card-body">
+                <h5 class="card-title">{{ article.slug }}</h5>
+                <h5 class="card-title">{{ article.titre }}</h5>
+                <p class="card-text">{{ article.article }}</p>
+                <p class="card-text">{{ article.date ? article.date|date('Y-m-d H:i:s') : '' }}</p>
+                <p class="card-text">L'auteur est :<br> {{ article.auteur }}</p>
+                <a href="{{ path('articles_show', {'id': article.id}) }}">show</a>
+                
+            </div>
+        </div>
+    
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="5">no records found</td>
             </tr>
         {% endfor %}
-        </tbody>
-    </table>
-
+    </div>
+    {% if is_granted("ROLE_ADMIN") %}
     <a href="{{ path('articles_new') }}">Create new</a>
+    {% endif %}
+</div>
+    
 {% endblock %}

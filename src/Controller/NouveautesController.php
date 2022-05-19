@@ -15,6 +15,7 @@ class NouveautesController extends AbstractController
     #[Route('/', name: 'nouveaute_index', methods: ['GET'])]
     public function index(ArticlesRepository $articlesRepository ): Response
     {
+        // findBy permet de retourner une liste d'object qu'on aura sellectionné// 
         return $this->render('nouveaute/index.html.twig', [
             'nouveautes' => $articlesRepository->findBy( [ 'slug' => 'Nouveaute']),
         ]);

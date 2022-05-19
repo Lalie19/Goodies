@@ -1,3 +1,20 @@
-.img-size-little{
+/* .img-size-little{
     height: 10rem;
+} */
+
+/* true beauty  */
+
+
+
+.row2{
+    position: relative;
+    display: flex;
+    /* align-items: center; */
+    flex-direction: row;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+
 }
+

@@ -3,12 +3,15 @@
 {% block title %}True Beauty{% endblock %}
 
 {% block body %}
+<br>
+<br>
+<br>
+<div class='container'>
+    <h1 id='titre'>Goodies True Beauty</h1>
 
-    <h1>Goodies index</h1>
-
-    
+    <div class="row2">
                 {% for goody in trues %}
-    <div class="row">
+    
         <div class="card m-3" style="width: 18rem;">
             <img class="img-size-little" src="/image/upload/{{goody.image}}" alt="image"></td>
             <div class="card-body">
@@ -19,13 +22,13 @@
                 <a href="{{ path('cart_add' , {'goodies' : goody.id}) }}">add to basket</a>
             </div>
         </div>
-    </div>
+    
         {% else %}
             <tr>
                 <td colspan="5">no records found</td>
             </tr>
         {% endfor %}
-        </tbody>
-    </table>
-
+    
+    </div>
+</div>
 {% endblock %}

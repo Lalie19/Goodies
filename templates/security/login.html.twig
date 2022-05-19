@@ -4,6 +4,9 @@
 
 {% block body %}
 <div class="container">
+<br>
+<br>
+<br>
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>

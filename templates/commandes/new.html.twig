@@ -3,9 +3,13 @@
 {% block title %}Facture{% endblock %}
 
 {% block body %}
+<br>
+<br>
+<br>
+<div class='container'>
     <h1>Commandes</h1>
 
-    <h2>Resume panier</h2>
+    <h2>Resumé du panier</h2>
 
     <table class="table">
         <thead>
@@ -39,4 +43,5 @@
     {{ form_widget(form) }}
     <button class="btn btn-warning">{{ button_label|default('Confirm and Pay') }}</button>
 {{ form_end(form) }}
+</div>
 {% endblock %}

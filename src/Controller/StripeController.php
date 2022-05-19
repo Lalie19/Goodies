@@ -31,7 +31,7 @@ class StripeController extends AbstractController
             $item = [
                 "price_data" => [
                     "currency" => "eur",
-                    "goodies_data" =>[
+                    "product_data" =>[
                         "name" => $achat->getGoodies()->getName(),
                     ],
                     "unit_amount" => $achat->getNombres(),

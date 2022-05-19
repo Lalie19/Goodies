@@ -68,14 +68,39 @@ class CommentaireController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'commentaire_delete', methods: ['POST'])]
-    public function delete(Request $request, Commentaire $commentaire, EntityManagerInterface $entityManager): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$commentaire->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($commentaire);
-            $entityManager->flush();
-        }
+//     #[Route('/{id}', name: 'commentaire_delete', methods: ['POST'])]
+//     public function delete(Request $request, Commentaire $commentaire, EntityManagerInterface $entityManager): Response
+//     {
+//         if ($this->isCsrfTokenValid('delete'.$commentaire->getId(), $request->request->get('_token'))) {
+//             $entityManager->remove($commentaire);
+//             $entityManager->flush();
+//         }
 
-        return $this->redirectToRoute('commentaire_index', [], Response::HTTP_SEE_OTHER);
-    }
+//         return $this->redirectToRoute('commentaire_index', [], Response::HTTP_SEE_OTHER);
+//     }
+// }
+
+// class CommentaireController extends AbstractController
+// {
+//      #[Route('/conference/{slug}', name: 'conference')]
+//      public function show(Request $request, Conference $conference, CommentaireRepository $commentRepository): Response
+//      {
+// +        $comment = new Comment();
+// +        $form = $this->createForm(CommentFormType::class, $comment);
+// +
+//          $offset = max(0, $request->query->getInt('offset', 0));
+//          $paginator = $commentRepository->getCommentPaginator($conference, $offset);
+
+// class ConferenceController extends AbstractController
+// {
+//     'comments' => $paginator,
+//     'previous' => $offset - CommentaireRepository::PAGINATOR_PER_PAGE,
+//     'next' => min(count($paginator), $offset + CommentaireRepository::PAGINATOR_PER_PAGE),
+// +            'comment_form' => $form->createView(),
+
+             
+//          ]));
+//      }
+//  }
+
 }
