@@ -5,9 +5,11 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -89,13 +91,25 @@ class RegistrationFormType extends AbstractType
                     'placeholder' => "entrez votre speudo ici",
                 ],
             ])
-            ->add('picture', TextType::class, [
-                'label' => "votre image : ",
-                'required' => true,
-                
+            ->add('picture', FileType::class, [
+                'mapped' => false, 
+                'required' => false, 
+                'multiple' => false,
+                'label' => "uploader une image ",
                 'attr' => [
-                    'placeholder' => "entrez votre image ici",
+                    'placeholder' => 'uploader une image depuis votre ordinateur'
                 ],
+                'constraints' => [
+                    new File([
+                        'maxSize' => '2048K',
+                        'mimeTypes' => [
+                            'image/png',
+                            'image/jpg',
+                            'image/jpeg',
+                            'image/gif',
+                        ],
+                    ])
+                    ],
             ]);
     }
 

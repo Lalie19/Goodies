@@ -42,14 +42,14 @@ class StripeController extends AbstractController
         }
         // dd($lineItems);
         $successRoute = $this->generateUrl('stripe_valid_payment', [
-            // "_locale" => $request->getLocale(),
-            "commandes" => $commande->getId(),
+            "_locale" => $request->getLocale(),
+            "commande" => $commande->getId(),
             "stripeSucessKey" => $commande->getStripeSucessKey(),
         ], UrlGeneratorInterface::ABSOLUTE_URL);
         // dd($successRoute);
         $errorRoute = $this->generateUrl('stripe_error_payment', [
-            // "_locale" => $request->getLocale(),
-            "commandes" => $commande->getId(),
+            "_locale" => $request->getLocale(),
+            "commande" => $commande->getId(),
         ], UrlGeneratorInterface::ABSOLUTE_URL);
 
         $stripeSession = \Stripe\Checkout\Session::create([
@@ -66,15 +66,17 @@ class StripeController extends AbstractController
         return $this->redirect($stripeSession->url, 303);
     }
 
-    #[Route('/stripe/{commandes}/success/{stripeSucessKey}', name: 'stripe_valid_payment')]
-    public function success(Commande $commande, string $stripeSuccesKey, SessionInterface $session, AchatsRepository $achatsRepository): Response
+    #[Route('/stripe/{commande}/success/{stripeSucessKey}', name: 'stripe_valid_payment')]
+    public function success(Commande $commande, string $stripeSucessKey, SessionInterface $session, AchatsRepository $achatsRepository): Response
     {
-        if ($stripeSuccesKey != $commande->getStripeSucessKey()) {
+        // dd($commande);
+        if ($stripeSucessKey != $commande->getStripeSucessKey()) {
             $this->redirectToRoute("stripe_error_payment", [
                 'commande' => $commande->getId(),
             ]);
         }
         $commande->setPaid(true);
+        // on le met dans la session avec un tableau vide //
         $session->set('cart', []);
         $achatCriteriav = [
             "commande" => $commande,
@@ -82,7 +84,7 @@ class StripeController extends AbstractController
         $achatses = $achatsRepository->findBy($achatCriteriav);
         return $this->render('stripe/success.html.twig', [
             'commande' => $commande,
-            'achat' => $achatses,
+            'achatses' => $achatses,
         ]);
     }
     

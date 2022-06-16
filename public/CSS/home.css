@@ -5,28 +5,28 @@
   }
 
 /* Favori  */
-#favori{
-    margin-left: 350px;    
- }
+
 
 #premier{ 
     display: inline-flex;
     flex-direction: row;
     font-family: 'Euphoria Script', cursive;
     text-decoration: none;
-    
+    margin-top: 50px;
 } 
 #premier1{ 
     display: inline-flex;
     flex-direction: row;
     margin-left: 550px;
     font-family: 'Euphoria Script', cursive;
+    margin-top: 50px;
 } 
 
 #favori1{
-    margin-left: 20px;
+      
+    margin-top: 600px;  
     
-}
+ }
 
 .trait {
     width: 1240px;
@@ -35,24 +35,21 @@
 }
 
 
-
-/* favori blog */
-
-/* Favori 1 */
-#favori1{
-    margin-left: 350px;   
-    margin-top: 550px;  
-    
- }
-
 .row1{
-    --bs-gutter-x: 1.5rem;
+    /* --bs-gutter-x: 1.5rem; */
     --bs-gutter-y: 0;
     display: flex;
     flex-wrap: wrap;
     margin-top: calc(-1 * var(--bs-gutter-y));
     margin-left: calc(-.5 * var(--bs-gutter-x));
+    margin-top: 30px;
 }
+/* favori blog */
+
+
+
+
+
 
 
 

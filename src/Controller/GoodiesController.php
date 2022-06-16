@@ -39,7 +39,9 @@ class GoodiesController extends AbstractController
 
         // si le form est soumi et qu'il est valide  //
         if ($form->isSubmitted() && $form->isValid()) {
+            // recupérer les images //
             $imageFile = $form->get('image')->getData();
+            // si il y a une image on la traite //
             if ($imageFile) {
                 $finalFileName = $uploadTool->upload($imageFile);
 
@@ -83,11 +85,16 @@ class GoodiesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $imageFile = $form->get('image')->getData();
             if ($imageFile) {
-                $oldPath = "";
-                if ($goody->getImage()){
-                    $oldPath = $goody->getImage();
-                }
-                $finalFileName = $uploadTool->upload($imageFile, $oldPath);
+                // $oldPath = "";
+                // if ($goody->getImage()){
+                //     $oldPath = $goody->getImage();
+                // }
+                // $finalFileName = $uploadTool->upload($imageFile, $oldPath);
+
+                // $goody->setImage($finalFileName);
+                $oldFile = $goody->getImage();
+    
+                $finalFileName = $uploadTool->upload($imageFile, $oldFile);
 
                 $goody->setImage($finalFileName);
             }

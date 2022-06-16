@@ -6,6 +6,7 @@
 
         <div>
             <div class="d-flex ">
+            
             <a href="{{ path('home') }}"><img class="logo"  src="../image/imageonline-co-whitebackgroundremoved.png" alt="logo" ></a>
 
             {% if app.user %}
@@ -21,7 +22,7 @@
 
               <div class="btn mt-3">
                 <button i class="fas fa-search " id="recherchebt" ></i></button>
-                <a href="{{ path('cart_show') }}"><button i class="fas fa-shopping-cart " id="shop" ></i></button></a>
+                <a  href="{{ path('cart_show') }}"><button i class="fas fa-shopping-cart " id="shop" ></i></button></a>
                 
               </div>
             </div>
@@ -29,6 +30,7 @@
 
         <div id="aside1">
           <ul>
+          
           {% if is_granted("ROLE_ADMIN") %}
             <li class="nav-item">
                 <a  class="btn btn-danger btn-lg" href="{{ path('admin') }}">Admin</a>

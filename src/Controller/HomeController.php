@@ -55,4 +55,30 @@ class HomeController extends AbstractController
     
         return $this->render('home/contact.html.twig');
     }
+
+    #[Route('/condition', name: 'home_condition')]
+    public function condition(): Response
+    {
+            return $this->render('home/condition.html.twig', [
+            'controller_name' => 'HomeController',          
+        ]);
+    }
+
+    #[Route('/mention', name: 'home_mention')]
+    public function mention(): Response
+    {
+            return $this->render('home/mention.html.twig', [
+            'controller_name' => 'HomeController',
+        ]);
+    }
+
+    #[Route('/policy', name: 'home_policy')]
+    public function policy(): Response
+    {
+            return $this->render('home/policy.html.twig', [
+            'controller_name' => 'HomeController',
+          
+        ]);
+    }
+
 }

@@ -18,6 +18,19 @@
   margin-bottom: 20px;
   margin-left: 20px;
 }
+
+/* compte */
+#compte {
+  border-radius: 50px;
+  margin-left: 50px;
+  font-size: 30px;
+}
+#connextion {
+  border-radius: 50px;
+  margin-left: 10px;
+  font-size: 20px; 
+}
+
 /* recherche */
 #recherche {
   margin-left: 150px;
@@ -29,17 +42,6 @@
   border: none;
   background-color: rgb(255, 41, 0);
   margin-right: 5px;
-}
-/* compte */
-#compte {
-  border-radius: 50px;
-  margin-left: 50px;
-  font-size: 30px;
-}
-#connextion {
-  border-radius: 50px;
-  margin-left: 10px;
-  font-size: 20px; 
 }
 
 /* shop */
@@ -69,4 +71,21 @@ ul li {
 
 .imcontact {
   margin-right: 150px;
+}
+
+
+
+@media screen and (max-width:1024px){
+  #recherche {
+    margin-right: 60px;
+    margin-left: 15px;
+  }
+  #recherchebt {
+    margin-right: 150px;
+  }
+  #shop {
+    margin-left: 20px;
+    margin-top: -100px;
+  }
+
 }

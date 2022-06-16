@@ -3,9 +3,15 @@
 {% block title %}New Goodies{% endblock %}
 
 {% block body %}
+<br>
+<br>
+<br>
+<br>
+<div class="container">
     <h1>Create new Goodies</h1>
 
     {{ include('goodies/_form.html.twig') }}
 
     <a href="{{ path('goodies_index') }}">back to list</a>
+    </div>
 {% endblock %}

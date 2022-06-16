@@ -1,20 +1,31 @@
 /* .img-size-little{
     height: 10rem;
 } */
-
+* {
+    margin: 0;
+    padding: 0;
+  }
 /* true beauty  */
 
 
 
 .row2{
     position: relative;
-    display: flex;
-    /* align-items: center; */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) ;
+    /* gap: 17px; */
+    align-items: center;
     flex-direction: row;
     min-width: 0;
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
 
+}
+
+@media screen and (max-width:1024px){
+    .row2{
+        grid-template-columns: repeat(2, 1fr) ;
+    }
 }
 

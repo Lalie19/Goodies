@@ -8,29 +8,31 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class UploadTool
 {
     private $slugger;
+
+    private $uploadFolder = "image/upload/";
     
-    private $imageDirectory;
+    // private $imageDirectory;
 
     public function __construct(SluggerInterface $slugger)
     {
         $this->slugger = $slugger;
-        $this->imageDirectory = "image/upload/";
+        // $this->imageDirectory = "image/upload/";
     }
 
-    public function upload(UploadedFile $newFile, ?string $oldPath = ""): string 
+    public function upload(UploadedFile $newFile, ?string $oldFile = ""): string 
     {
         $originalFileName = pathinfo($newFile->getClientOriginalName(), PATHINFO_FILENAME);
         $safeFilename = $this->slugger->slug($originalFileName);
-        $fullFilename = "$safeFilename" . uniqid() . '.' .  $newFile->guessExtension();
-        $newFile->move($this->imageDirectory, $fullFilename);
-        $this->delete($oldPath);
+        $fullFilename = $safeFilename . uniqid() . '.' .  $newFile->guessExtension();
+        $newFile->move($this->uploadFolder, $fullFilename);
+        $this->delete($oldFile);
         return $fullFilename;
     }
 
-    public function delete(?string $oldPath): void 
+    public function delete(?string $oldFileName = ""): void 
     {
-        if ($oldPath) {
-            unlink($this->imageDirectory . $oldPath);
+        if ($oldFileName) {
+            unlink($this->uploadFolder . $oldFileName);
         }
         
     }

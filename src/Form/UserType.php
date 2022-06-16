@@ -5,8 +5,10 @@ namespace App\Form;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 
@@ -32,9 +34,28 @@ class UserType extends AbstractType
             ->add('adress')
             ->add('phone')
             ->add('password')
-            ->add('role')
+            // ->add('role')
             ->add('speudo')
-            ->add('picture')
+            ->add('picture', FileType::class, [
+                'mapped' => false, 
+                'required' => false, 
+                'multiple' => false,
+                'label' => "uploader une image ",
+                'attr' => [
+                    'placeholder' => 'uploader une image depuis votre ordinateur'
+                ],
+                'constraints' => [
+                    new File([
+                        'maxSize' => '2048K',
+                        'mimeTypes' => [
+                            'image/png',
+                            'image/jpg',
+                            'image/jpeg',
+                            'image/gif',
+                        ],
+                    ])
+                    ],
+                ]);
         ;
     }
 

@@ -10,8 +10,8 @@
     <table class="table table-hover table-light table-bordered border-dark border border-2 w-75">
       <thead>
         <tr>
-          <th scope="col" class="text-center">
-            Référence</th>
+          {# <th scope="col" class="text-center">
+            Référence</th> #}
           <th scope="col" class="text-center">Produit</th>
           <th scope="col" class="text-center">Prix</th>
           <th scope="col" class="text-center">Quantité</th>
@@ -20,16 +20,16 @@
       <tbody>
         {% for row in achatses %}
           <tr class="table-active">
-            <td scope="row">{{ row.goodies.reference }}</td>
+            {# <td scope="row">{{ row.goodies.reference }}</td> #}
             <td class="text-center">{{ row.goodies.name }}</td>
-            <td class="text-center">{{ row.goodies.price|price }}</td>
+            <td class="text-center">{{ row.goodies.price }}</td>
             <td class="text-center">{{ row.quantity }}</td>
           </tr>
         {% endfor %}
         <tfoot>
           <th scope="row" class="text-center">Prix Total TTC</th>
           <td colspan="3" class="text-end">
-            {{ commande.price|price }}
+            {{ commande.price }}
           </td>
         </tfoot>
       </tbody>

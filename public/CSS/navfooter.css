@@ -44,7 +44,21 @@
 #cgv {
     text-decoration: none;
     color: black;
-    margin-left: 400px;
+    margin-left: 200px;
+    font-size: 50px;
+    font-family: "Euphoria Script", cursive; 
+}
+#mention {
+    text-decoration: none;
+    color: black;
+    margin-left: 100px;
+    font-size: 50px;
+    font-family: "Euphoria Script", cursive; 
+}
+#pc {
+    text-decoration: none;
+    color: black;
+    margin-left: 100px;
     font-size: 50px;
     font-family: "Euphoria Script", cursive; 
 }

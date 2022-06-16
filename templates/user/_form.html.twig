@@ -18,16 +18,17 @@
     {{ form_row(form.speudo) }}
     </div>
 </div>
-    
-
-    {# {% if form.vars.value.image != "" %}
+{{ form_row(form.password) }}
+    {% if form.vars.value.picture != "" %}
         <p> Image actuelle:</p>
-        <img class="img-size-little" src="/image/upload/{{form.vars.value.image}}" alt="image">
+        <img class="img-size-little" src="/image/upload/{{form.vars.value.picture}}" alt="image">
     {% endif %}
     {# <pre>
     {{ dump(form.vars.value.image)}}
     </pre> #}
-    {#{{ form_row(form.image) }} #}
+    {{ form_row(form.picture) }}
+
+    
 
 
     <button class="btn btn-warning">{{ button_label|default('Save') }}</button>
