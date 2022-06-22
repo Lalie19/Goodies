@@ -8,10 +8,13 @@
 <br>
 <br>
 <div class="container">
-    <h1>Create new Goodies</h1>
+    <h1 id='titre'>Create new Goodies</h1>
 
     {{ include('goodies/_form.html.twig') }}
-
-    <a href="{{ path('goodies_index') }}">back to list</a>
+    
+    <br>
+    <a class="btn btn-warning btn-lg" href="{{ path('goodies_index') }}">back to list</a>
+    <br>
     </div>
+    <br>
 {% endblock %}
