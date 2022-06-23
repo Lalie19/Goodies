@@ -34,7 +34,7 @@ class StripeController extends AbstractController
                     "product_data" =>[
                         "name" => $achat->getGoodies()->getName(),
                     ],
-                    "unit_amount" => $achat->getNombres(),
+                    "unit_amount" => 100*$achat->getNombres(),
                 ],
                 "quantity" => $achat->getQuantity(),
             ];
@@ -88,7 +88,7 @@ class StripeController extends AbstractController
         ]);
     }
     
-    #[Route('/stripe/{commandes}/cancel', name: 'stripe_error_payment')]
+    #[Route('/stripe/{commande}/cancel', name: 'stripe_error_payment')]
     public function error(Commande $commande, TranslatorInterface $translator ): Response
     {
         $this->addFlash("danger", $translator->trans("src.controller.stripe:There was a problem during the payment process"));

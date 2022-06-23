@@ -7,7 +7,8 @@
         <div>
             <div class="d-flex ">
             
-            <a href="{{ path('home') }}"><img class="logo"  src="../image/imageonline-co-whitebackgroundremoved.png" alt="logo" ></a>
+            {# <a href="{{ path('home') }}"><img class="logo"  src="../image/imageonline-co-whitebackgroundremoved.png" alt="logo" ></a> #}
+            <a href="{{ path('home') }}"><img class="logo"  src="/image/imageonline-co-whitebackgroundremoved.png" alt="logo" ></a>
 
             {% if app.user %}
             <a href="{{ path('user_profil') }}" class="mt-4"><button i class="far fa-user-circle" id="compte" ></i>Mon compte</button></a>
