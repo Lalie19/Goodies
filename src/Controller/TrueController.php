@@ -16,7 +16,7 @@ class TrueController extends AbstractController
     {
         // findBy permet de retourner une liste d'object qu'on aura sellectionné// 
         return $this->render('true/index.html.twig', [
-            'trues' => $goodiesRepository->findBy( [ 'name' => "True"]),
+            'trues' => $goodiesRepository->findBy(array ("name" => "True") ),
         ]);
     }
     
