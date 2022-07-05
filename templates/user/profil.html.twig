@@ -19,9 +19,9 @@
     <div>Prénom :{{ app.user.firstname}}</div>
     <div>Email : {{ app.user.email}}</div>
 
- {# <a class="my-3 btn btn-secondary" href="{{ path('invoice_user_invoice', {'id': user.id}) }}">Mes achats</a> #}
-  {# <a class="my-3 btn btn-secondary" href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a> #}
+ 
       <a class="my-3 btn btn-secondary" href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a>
+      <a href="{{ path('app_forgot_password_request') }}" class="btn btn-warning">Modifier le mot de passe</a>
 
       {# {{ include('user/_delete_form.html.twig') }} #}
 
