@@ -31,29 +31,36 @@ class RegistrationController extends AbstractController
     #[Route('/register', name: 'register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, UserAuthenticator $authenticator, EntityManagerInterface $entityManager, UploadTool $uploadTool): Response
     {
+        // crée un nouvel utilisateur 
         $user = new User();
+        // appeler doctrine pour crée le form 
         $form = $this->createForm(RegistrationFormType::class, $user);
+        // demande de traitement de la saisi du form 
         $form->handleRequest($request);
 
+        // si le form est soumi et qu'il est valide  
         if ($form->isSubmitted() && $form->isValid()) {
+            // recupérer les images 
             $imageFile = $form->get('picture')->getData();
+            // si il y a une image on la traite
             if ($imageFile) {
                 $finalFileName = $uploadTool->upload($imageFile);
 
                 $user->setPicture($finalFileName);
             }
-            // encode the plain password
+            // traité le mot de passe 
             $user->setPassword(
             $userPasswordHasher->hashPassword(
                     $user,
                     $form->get('plainPassword')->getData()
                 )
             );
-
+            // indiquer a entityManager que cette entity devra être enregistrer
             $entityManager->persist($user);
+            // enregistrement de l'entity dans la BDD
             $entityManager->flush();
 
-            // generate a signed url and email it to the user
+            // générer une URL signée et l’envoyer par e-mail à l’utilisateur
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
                     ->from(new Address('no-response@lalie.net', 'service client'))
@@ -61,9 +68,10 @@ class RegistrationController extends AbstractController
                     ->subject('Veuiellez confirmer votre email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
-            // do anything else you need here, like send an email
+            // message qui s'affiche 
             $this->addFlash("warning", "vous devez validez votre adresse de courriel");
 
+            
             return $userAuthenticator->authenticateUser(
                 $user,
                 $authenticator,
@@ -71,6 +79,7 @@ class RegistrationController extends AbstractController
             );
         }
 
+        // création de la view du form affiché sur la page indiqué au render
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
@@ -79,6 +88,7 @@ class RegistrationController extends AbstractController
     #[Route('/verify/email', name: 'app_verify_email')]
     public function verifyUserEmail(Request $request, UserRepository $userRepository): Response
     {
+        // récupérer id
         $id = $request->get('id');
 
         if (null === $id) {
@@ -91,7 +101,7 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('app_register');
         }
 
-        // validate email confirmation link, sets User::isVerified=true and persists
+        // valider le lien de confirmation de l'email
         try {
             $this->emailVerifier->handleEmailConfirmation($request, $user);
         } catch (VerifyEmailExceptionInterface $exception) {
@@ -100,7 +110,7 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('app_register');
         }
 
-        // @TODO Change the redirect on success and handle or remove the flash message in your templates
+        // les messages flash plus la redirection
         $this->addFlash('success', 'Votre adress de courriel  été correctement validé.');
         $this->addFlash('success', "Votre êtes connecté, vous avez été redirigé vers la page d'acceuil.");
 

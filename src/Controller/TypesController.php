@@ -25,8 +25,11 @@ class TypesController extends AbstractController
     #[Route('/new', name: 'types_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
+    
         $type = new Types();
+        
         $form = $this->createForm(TypesType::class, $type);
+        
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
