@@ -14,7 +14,7 @@ class TrueController extends AbstractController
     #[Route('/', name: 'true_index', methods: ['GET'])]
     public function index(GoodiesRepository $goodiesRepository ): Response
     {
-        // findBy permet de retourner une liste d'object qu'on aura sellectionné// 
+         
         return $this->render('true/index.html.twig', [
             'trues' => $goodiesRepository->findBy( ["name" => "True"], [ 'price' => 'ASC'] ),
         ]);
