@@ -16,7 +16,7 @@ class CartController extends AbstractController
     #[Route(['/{goodies}/add',], name: 'cart_add')]
     public function add(Goodies $goodies, SessionInterface $session ): Response
     {
-        // Récupérer un panier dans la session et stocker dans la session sinon c'est un tableau vide //
+        // Récupérer un panier dans la session et stocker dans la session  //
         $cart = $session->get('cart', []);
         $id = $goodies->getId();
 
