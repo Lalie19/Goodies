@@ -104,7 +104,7 @@ class CartController extends AbstractController
         foreach ($cart as $id => $quantity) {
             // recherche du protuit //
             $goodies = $goodiesRepository->find($id);
-            // ajouté un tableau qui contient les goodies et la quantité//
+            // ajouté  les goodies et la quantité//
             $fullCart[] = [
                 "goodies" => $goodies,
                 "quantity" => $quantity,
