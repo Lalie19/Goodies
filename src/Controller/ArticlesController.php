@@ -28,25 +28,22 @@ class ArticlesController extends AbstractController
     #[Route('/new', name: 'articles_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
-        // crée un nouvel object //
+        
         $article = new Articles();
-        // appeler doctrine pour créer un form //
         $form = $this->createForm(ArticlesType::class, $article);
-        // demande de traitement de la saisi du form  //
         $form->handleRequest($request);
 
-        // si le form est soumi et qu'il est valide  //
+        
         if ($form->isSubmitted() && $form->isValid()) {
-            // indiquer a entityManager que cette entity devra être enregistrer  //
+            
             $entityManager->persist($article);
-            // enregistrement de l'entity dans la BDD //
             $entityManager->flush();
 
-            // redirection de la page ver la page ci-dessous //
+            
             return $this->redirectToRoute('articles_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        // création de la view du form affiché sur la page indiqué au render //
+        
         return $this->renderForm('articles/new.html.twig', [
             'article' => $article,
             'form' => $form,
@@ -66,22 +63,18 @@ class ArticlesController extends AbstractController
     #[Route('/{id}/edit', name: 'articles_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Articles $article, EntityManagerInterface $entityManager): Response
     {
-        // Doctrine crée un form selon l'article à modifier //
+        
         $form = $this->createForm(ArticlesType::class, $article);
-        // traitement de la saisie du form //
         $form->handleRequest($request);
 
-        // si le form est soumi et qu'il est valide  //
+        
         if ($form->isSubmitted() && $form->isValid()) {
-
-            // enregistrement de l'entity dans la BDD //
             $entityManager->flush();
 
-            // redirection de la page ver la page ci-dessous //
             return $this->redirectToRoute('articles_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        // modification de la view du form affiché sur la page indiqué au render //
+        
         return $this->renderForm('articles/edit.html.twig', [
             'article' => $article,
             'form' => $form,
@@ -95,13 +88,13 @@ class ArticlesController extends AbstractController
         // vérifie si le token est valide //
         if ($this->isCsrfTokenValid('delete'.$article->getId(), $request->request->get('_token'))) {
 
-            // indiquer a entityManager que cette entity devra être supprimé  //
+            
             $entityManager->remove($article);
-            // supprimé l'entity de la BDD //
+            
             $entityManager->flush();
         }
 
-        // redirection de la page ver la page ci-dessous //
+        
         return $this->redirectToRoute('articles_index', [], Response::HTTP_SEE_OTHER);
     }
 }

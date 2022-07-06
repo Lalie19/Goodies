@@ -76,7 +76,7 @@ class GoodiesController extends AbstractController
     #[Route('/{id}/edit', name: 'goodies_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Goodies $goody, EntityManagerInterface $entityManager, UploadTool $uploadTool): Response
     {
-        // Doctrine crée un form selon l'article à modifier //
+        // Doctrine crée un form selon le goodie à modifier //
         $form = $this->createForm(GoodiesType::class, $goody);
         // traitement de la saisie du form //
         $form->handleRequest($request);

@@ -31,16 +31,14 @@ class RegistrationController extends AbstractController
     #[Route('/register', name: 'register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, UserAuthenticator $authenticator, EntityManagerInterface $entityManager, UploadTool $uploadTool): Response
     {
-        // crée un nouvel utilisateur 
+    
         $user = new User();
-        // appeler doctrine pour crée le form 
         $form = $this->createForm(RegistrationFormType::class, $user);
-        // demande de traitement de la saisi du form 
         $form->handleRequest($request);
 
-        // si le form est soumi et qu'il est valide  
+         
         if ($form->isSubmitted() && $form->isValid()) {
-            // recupérer les images 
+             
             $imageFile = $form->get('picture')->getData();
             // si il y a une image on la traite
             if ($imageFile) {
@@ -55,9 +53,9 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-            // indiquer a entityManager que cette entity devra être enregistrer
+            
             $entityManager->persist($user);
-            // enregistrement de l'entity dans la BDD
+            
             $entityManager->flush();
 
             // générer une URL signée et l’envoyer par e-mail à l’utilisateur
