@@ -126,11 +126,14 @@ class UserController extends AbstractController
         // traitement de la saisie du form //
         $form->handleRequest($request);
 
+        // si le form est soumi et qu'il est valide
         if ($form->isSubmitted() && $form->isValid()) {
+            // enregistrement de l'entity dans la BDD
             $entityManager->flush();
 
             return $this->redirectToRoute('user_profil', [], Response::HTTP_SEE_OTHER);
         }
+        // view affiché 
         return $this->renderForm('user/profil_edit.html.twig', [
             'user' => $user,
             'form' => $form,
